@@ -10,19 +10,18 @@ from city import city
 # for i in cities:
 #     print(i)
 
-cityname = input('ÄãÏë²éÄÄ¸ö³ÇÊĞµÄÌìÆø£¿\n')
+cityname = input('ä½ æƒ³æŸ¥å“ªä¸ªåŸå¸‚çš„å¤©æ°”ï¼Ÿ\n')
 citycode = city.get(cityname)
 # print(citycode)
 if citycode:
    url = ('http://www.weather.com.cn/data/cityinfo/%s.html' % citycode)
    content = requests.get(url)
    content.encoding = 'utf-8'
-   content = content.text
-   data = json.loads(content)
+   data = json.loads(content.text)
    # print(type(content)) # string
    # print(type(data)) # dict
 else:
-   print('Ã»ÓĞÕÒµ½¸Ã³ÇÊĞ')
+   print('æ²¡æœ‰æ‰¾åˆ°è¯¥åŸå¸‚')
 try:
     result = data['weatherinfo']
     str_temp = ('%s\n%s ~ %s') % (
@@ -32,4 +31,4 @@ try:
     )
     print(str_temp)
 except:
-   print('²éÑ¯Ê§°Ü')
+   print('æŸ¥è¯¢å¤±è´¥')
